@@ -1326,10 +1326,10 @@ int LoadEmb(string modelname) {
         /*****/
     }
     fclose(f);
-   
+    
     /*****/
     cout << "pretrain model: " << modelname << " loaded." << endl;
-    /*****/ 
+    /*****/  
     return 0;
 }
 
