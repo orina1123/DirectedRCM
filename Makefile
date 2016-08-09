@@ -4,7 +4,7 @@ CFLAGS = -lm -pthread -Ofast -march=native -Wall -funroll-loops -Wno-unused-resu
 
 OBJS = EvaluationPP.o Paraphrase.o
 
-PROG = word2vec_joint word2vec_join_thread word2vec_pretrain directed_RCM tune_lm eval
+PROG = word2vec_joint orig_RCM directed_RCM tune_lm eval
 all: $(PROG)
 
 %.o : %.cpp
@@ -13,12 +13,8 @@ all: $(PROG)
 word2vec_joint : word2vec_joint.cpp $(OBJS)
 	$(CC) word2vec_joint.cpp $(OBJS) -o word2vec_joint $(CFLAGS)
 
-
-word2vec_join_thread : word2vec_join_thread.cpp $(OBJS)
-	$(CC) word2vec_join_thread.cpp $(OBJS) -o word2vec_join_thread $(CFLAGS)
-
-word2vec_pretrain : word2vec_pretrain.cpp $(OBJS)
-	$(CC) word2vec_pretrain.cpp $(OBJS) -o word2vec_pretrain $(CFLAGS)
+orig_RCM : orig_RCM.cpp $(OBJS)
+	$(CC) orig_RCM.cpp $(OBJS) -o orig_RCM $(CFLAGS)
 
 directed_RCM : directed_RCM.cpp Paraphrase_directed.o
 	$(CC) directed_RCM.cpp Paraphrase_directed.o -o directed_RCM $(CFLAGS)
