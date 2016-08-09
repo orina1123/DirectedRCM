@@ -4,7 +4,7 @@ CFLAGS = -lm -lpthread -Ofast -march=native -Wall -funroll-loops -Wno-unused-res
 
 OBJS = EvaluationPP.o Paraphrase.o
 
-PROG = word2vec_joint word2vec_join_thread tune_lm eval
+PROG = word2vec_joint word2vec_join_thread word2vec_pretrain tune_lm eval
 all: $(PROG)
 
 %.o : %.cpp
@@ -13,8 +13,13 @@ all: $(PROG)
 word2vec_joint : word2vec_joint.cpp $(OBJS)
 	$(CC) word2vec_joint.cpp $(OBJS) -o word2vec_joint $(CFLAGS)
 
+
 word2vec_join_thread : word2vec_join_thread.cpp $(OBJS)
 	$(CC) word2vec_join_thread.cpp $(OBJS) -o word2vec_join_thread $(CFLAGS)
+
+word2vec_pretrain : word2vec_pretrain.cpp $(OBJS)
+	$(CC) word2vec_pretrain.cpp $(OBJS) -o word2vec_pretrain $(CFLAGS)
+
 
 tune_lm : tune_lm.cpp $(OBJS)
 	$(CC) tune_lm.cpp $(OBJS) -o tune_lm $(CFLAGS)
