@@ -224,7 +224,7 @@ int evaluateMRR(string filename, int threshold, Paraphrase* pp)
         }
         //vocabdict[string(&vocab[b * max_w])] = (int)b;
         for (a = 0; a < size; a++) fread(&M[a + b * size], sizeof(float), 1, f);
-        for (a = 0; a < size; a++) fread(&M[a + b * size], sizeof(float), 1, f);
+        for (a = 0; a < size; a++) fread(&M[a + b * size], sizeof(float), 1, f); //** read syn1neg[] **
         len = 0;
         for (a = 0; a < size; a++) len += M[a + b * size] * M[a + b * size];
         len = sqrt(len);
