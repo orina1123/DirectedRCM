@@ -1310,9 +1310,9 @@ int LoadEmb(string modelname) {
         fscanf(f, "%s%c%d%c", tmpword, &ch, &count, &ch2);
         //fscanf(f, "%s%c", tmpword, &ch);
         *****/
-	/*****/
+		/*****/
         fscanf(f, "%s%c", tmpword, &ch);
-	/*****/
+		/*****/
         int id = SearchVocab(tmpword);
         if (id == -1) continue;
         /*****

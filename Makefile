@@ -1,17 +1,21 @@
 CC = g++
 #The -Ofast might not work with older versions of gcc; in that case, use -O2
 CFLAGS = -lm -pthread -Ofast -march=native -Wall -funroll-loops -Wno-unused-result
+#CFLAGS = -lm -pthread -Wall -g #debug
 
 OBJS = EvaluationPP.o Paraphrase.o
 
-PROG = word2vec_save_both word2vec_joint orig_RCM directed_RCM sep_in_out_emb eval
+PROG = word2vec_save_both word2vec_load_pretrain word2vec_joint orig_RCM directed_RCM sep_in_out_emb eval
 all: $(PROG)
 
 %.o : %.cpp
 	$(CC) -c $< -o $@ $(CFLAGS)
 
-word2vec_save_both : word2vec_save_both.c $(OBJS)
-	$(CC) word2vec_save_both.c $(OBJS) -o word2vec_save_both $(CFLAGS)
+word2vec_save_both : word2vec_save_both.c
+	$(CC) word2vec_save_both.c -o word2vec_save_both $(CFLAGS)
+
+word2vec_load_pretrain : word2vec_load_pretrain.cpp
+	$(CC) word2vec_load_pretrain.cpp -o word2vec_load_pretrain $(CFLAGS)
 
 word2vec_joint : word2vec_joint.cpp $(OBJS)
 	$(CC) word2vec_joint.cpp $(OBJS) -o word2vec_joint $(CFLAGS)
